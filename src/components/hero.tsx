@@ -107,19 +107,6 @@ export function Hero() {
               <span>VIEW PAST WEDDINGS</span>
             </Link>
           </motion.div>
-
-          {/* Social Proof */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="flex items-center justify-center md:justify-start gap-3 text-dust-gold/70 text-center md:text-left"
-          >
-            <span className="font-sans text-[10px] tracking-widest uppercase font-semibold">
-              15+ YEARS OF EXPERTISE • 200+ WEDDINGS CURATED
-            </span>
-          </motion.div>
-
         </div>
       </div>
     </section>
