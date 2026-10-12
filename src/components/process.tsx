@@ -22,15 +22,15 @@ const stages = [
     number: "03",
     title: "Curate & Shop",
     description: "The search becomes focused. I shortlist, source and edit the options worth your time, through virtual curation or in-person shopping. We refine outfits, customisation, fittings and selections until the wardrobe feels right — not simply finished.",
-    image: null,
-    imageAlt: ""
+    image: "/himja-process-shop.webp",
+    imageAlt: "Himja Behl examining bespoke embroidery and textile swatches"
   },
   {
     number: "04",
     title: "Style Head to Toe",
     description: "Once the clothes are locked, we complete the look: jewellery, shoes, drapes, accessories, hair and makeup direction, and the small styling decisions that change how an outfit finally reads. You walk into the wedding knowing the entire look has been considered.",
-    image: null,
-    imageAlt: ""
+    image: "/himja-process-style.webp",
+    imageAlt: "Bespoke bridal polki and emerald jewelry styling flatlay"
   }
 ];
 
