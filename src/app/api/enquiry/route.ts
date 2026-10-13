@@ -48,21 +48,18 @@ export async function POST(request: Request) {
       console.log('Local CSV writing skipped (normal on read-only serverless environment like Vercel):', csvError);
     }
 
-    // 2. Execute Nodemailer
-    try {
-      const emailUser = process.env.GMAIL_USER;
-      const emailPass = process.env.GMAIL_APP_PASSWORD;
-      if (!emailUser || !emailPass) {
-        throw new Error("GMAIL_USER / GMAIL_APP_PASSWORD env vars are not configured");
-      }
-
-      const transporter = nodemailer.createTransport({
-        service: 'gmail',
-        auth: {
-          user: emailUser,
-          pass: emailPass,
-        },
-      });
+    // 2. Execute Nodemailer (optional fallback if SMTP credentials provided)
+    const emailUser = process.env.GMAIL_USER;
+    const emailPass = process.env.GMAIL_APP_PASSWORD;
+    if (emailUser && emailPass) {
+      try {
+        const transporter = nodemailer.createTransport({
+          service: 'gmail',
+          auth: {
+            user: emailUser,
+            pass: emailPass,
+          },
+        });
 
       const htmlContent = `
         <!DOCTYPE html>
@@ -188,6 +185,7 @@ export async function POST(request: Request) {
       console.error("Failed to send email via nodemailer:", emailError);
       // We don't fail the whole request just because email failed, since CSV saved!
     }
+  }
 
     // 3. Sync to Google Sheets Webhook (if configured)
     const sheetsWebhookUrl = process.env.GOOGLE_SHEETS_WEBHOOK_URL;
